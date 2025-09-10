@@ -1,0 +1,21 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install && cd backend && npm install && npx prisma generate && npm run build",
+  "functions": {
+    "api/[...all].ts": {
+      "includeFiles": ["backend/dist/**", "backend/prisma/schema.prisma", "backend/package.json"],
+      "memory": 512,
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/[...all]"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
