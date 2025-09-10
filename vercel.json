@@ -4,7 +4,7 @@
   "installCommand": "npm install && cd backend && npm install && npx prisma generate && npm run build",
   "functions": {
     "api/[...all].ts": {
-      "includeFiles": ["backend/dist/**", "backend/prisma/schema.prisma", "backend/package.json"],
+      "includeFiles": "backend/dist/**",
       "memory": 512,
       "maxDuration": 30
     }
